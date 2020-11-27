@@ -1,0 +1,261 @@
+%!TEX program=pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage[text={16cm,25cm},centering]{geometry}
+\usepackage{tgtermes,tgheros,tgcursor}
+\usepackage[libertine]{newtxmath}
+%\usepackage{newtxmath}
+\usepackage{amsmath,amssymb}
+\usepackage{physics}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+
+%\numberwithin{equation}{section}
+
+%\renewcommand{\jot}{1.5ex}
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\Ncal}{\mathcal{N}}
+%\DeclareMathOperator*{\tr}{\mathrm{tr}}
+%\DeclareMathOperator*{\Tr}{\mathrm{Tr}}
+\DeclareMathOperator*{\Ind}{\mathrm{Ind}}
+
+\newcommand{\del}{\partial}
+
+\newcommand{\gammab}{\bar{\gamma}}
+\newcommand{\Dsla}{D\hspace{-0.65em}\big/}
+\newcommand{\Fsla}{F\hspace{-0.6em}\big/}
+\newcommand{\Rsc}{R_{\mathrm{sc}}}
+
+%\renewcommand{\theequation}{\roman{equation}}
+
+\begin{document}
+\section{Index theorem of Dirac operators in general even dimensions}
+\subsection{Gamma matrices}
+$2n$-dimensional Euclidean gamma matrices $\gamma_a,\ a=1,\dots,2n$.
+\begin{align*}
+  \{ \gamma_a,\gamma_b \} = 2\delta_{ab}
+\end{align*}
+The chirality matrix $\gammab$ is defined by
+\begin{align*}
+  \gammab = (-i)^n \gamma_{1}\gamma_{2}\dots\gamma_{2n}.
+\end{align*}
+We use the notation
+\begin{align*}
+  \gamma_{a_1 a_2 \cdots a_k} = \gamma_{[a_1}\gamma_{a_2}\cdots \gamma_{a_k]}.% chktex 9
+\end{align*}
+
+In curved space we should introduce vielbein $e^{a}=e^{a}_{\mu} dx^{\mu}$ which satisfy
+\begin{align*}
+  g_{\mu\nu}(x)=e^{a}_{\mu}(x)e^{b}_{\nu}(x)\delta_{ab}.
+\end{align*}
+Coordinate indices $\mu,\nu,\dots$ are raised or lowered by $g^{\mu\nu},g_{\mu\nu}$ while local orthogonal indices $a,b,\dots$ are raised or lowered by $\delta^{ab},\delta_{ab}$. 
+$\mu,\nu,\dots$ indices and $a,b,\dots$ indices are interchanged by $e_{\mu}^{a},e^{\mu}_{a}$. 
+The spin connection, i.e.\ the gauge field for local SO$(2n)$ are written as $\omega_{\mu}{}^{a}{}_{b}(x)$ and the curvature is defined as
+\begin{align*}
+  R_{\mu\nu}{}^{a}{}_{b}:=(\del_{\mu}\omega_{\nu}-\del_{\nu}\omega_{\mu}+[\omega_{\mu},\omega_{\nu}])^{a}{}_{b}.
+\end{align*}
+
+The covariant derivative for a Dirac spinor $\psi$ is defined as
+\begin{align*}
+  D_{\mu}\psi:=\del_{\mu}\psi+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}\psi.
+\end{align*}
+Then the relation
+\begin{align*}
+  [D_{\mu},D_{\nu}]\psi=R_{\mu\nu}{}^{ab}\frac14 \gamma_{ab}\psi
+\end{align*}
+is satisfied.
+\subsection{Evaluation of the Dirac index}
+Let us consider a Dirac fermion in $2n$-dimensions which couples to the gravity as well as the gauge field.  The covariant derivative is defined as
+\begin{align*}
+  D_{\mu}\psi=\del_{\mu}\psi+A_{\mu}\psi+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}\psi,
+\end{align*}
+while the Dirac operator is defined as
+\begin{align*}
+  \Dsla\psi:=\gamma^{\mu}D_{\mu}\psi.
+\end{align*}
+The Dirac index is defined as
+\begin{align*}
+  \Ind{\Dsla}:=\Tr_{\text{Solution of } \Dsla \psi=0} \gammab
+\end{align*}
+Since non-zero eigen states of the Dirac operator always appear as pairs of positive chirality and negative chirality.  Therefore the index can be written as
+\begin{align*}
+  \Ind{\Dsla}=\Tr \left[\gammab\exp\left(\frac{\Dsla^2}{M^2}\right)\right]\label{ind1}
+\end{align*}
+for an arbitrary $M>0$.  Here the trace is taken over all spinor functional space. Our strategy is to evaluate right-hand in $M\to \infty$ limit.
+
+Let us evaluate $\Dsla^2$.
+\begin{align}
+  \Dsla^2
+   & =\gamma^{\mu}\gamma^{\nu}D_{\mu}D_{\nu}                                                  \\
+   & =g^{\mu\nu}D_{\mu}D_{\nu}+\frac12 \gamma^{\mu\nu}[D_{\mu},D_{\nu}]                       \\
+   & =D_{\mu}D^{\mu}+\frac12 \gamma^{\mu\nu}(F_{\mu\nu}+R_{\mu\nu}{}^{ab}\frac14\gamma_{ab}).
+  \label{Dsla2}
+\end{align}
+Taking the identities of Riemann tensor
+\begin{align*}
+  R_{\mu\nu\rho\sigma}=R_{\rho\sigma\mu\nu}=-R_{\nu\mu\rho\sigma}, \quad R_{\mu[\nu\rho\sigma]}=0
+\end{align*}
+into account, the last term of eq.~\eqref{Dsla2} is rewritten as
+\begin{align*}
+  \frac18\gamma^{\mu\nu}\gamma^{\rho\sigma}R_{\mu\nu\rho\sigma}
+  =\frac14 \Rsc,
+\end{align*}
+where $\Rsc$ is the scalar curvature.
+
+Thus
+\begin{align}
+  \frac{\Dsla^2}{M^2}=\frac{D_{\mu}D^{\mu}}{M^2}+\frac{\Rsc}{4M^2}+\frac{\Fsla}{M^2},\quad
+  \Fsla:=\frac12 F_{\mu\nu}\gamma^{\mu\nu}.
+  \label{Dsla2M2}
+\end{align}
+We can ignore $1/M$ terms in $M\to \infty$ unless it is multiplied by a gamma matrix or a derivative operator. 
+It is also true that the commutator between terms in eq.~\eqref{Dsla2M2} are ignored since they are higher order in $1/M$.
+Thus
+\begin{align*}
+   & \exp\left(\frac{\Dsla^2}{M^2}\right)=
+  \exp\left(\frac{\Fsla}{M^2}\right)
+  \exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right),                  \\
+   & D_{\mu}=\del_{\mu}+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}.
+\end{align*}
+
+Putting this result to eq.~\eqref{ind1} and express $\Tr$ as the trace in the position space and the trace of the spinor and color space $\tr$ we obtain
+\begin{align}
+  \Ind{\Dsla}:=\int d^{2n}x \sqrt{g}\tr\qty[\gammab
+    \exp\left(\frac{\Fsla}{M^2}\right)
+    \bra{x}\exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right)\ket{x}],
+  \label{ind2}
+\end{align}
+where $\ket{x}$ is normalized as
+\begin{align}
+  \ip{x'}{x}=\frac{1}{\sqrt{g}}\delta^{2n}(x'-x).
+\end{align}
+
+Our remaining task is to evaluate $\bra{x}\exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right)\ket{x}$.  In order to do this, first fix a point $x_0$ and choose a convenient gauge around this point as follows.  Let $y=x-x_0$ and
+\begin{align}
+  g_{\mu\nu}(x)=\delta_{\mu\nu}+O(y^2),\
+  e^{a}_{\mu}=\delta^{a}_{\mu}+O(y^2),\
+  \omega_{\mu}{}^{ab}(x)=\frac12 y^{\nu}R_{\nu\mu}{}^{ab}(x_0)+O(y^2).
+\end{align}
+Then
+\begin{align}
+  D_{\mu}/M=\del_{\mu}/M+\frac1{2M} y^{\nu}R_{\nu\mu}{}^{ab}\frac14 \gamma_{ab}.\label{Dmu}
+\end{align}
+It is convenient to rescale $y$ and $\gamma$ as
+\begin{align}
+  z^{\mu}:=M y^{\mu},\quad \theta^{a}:=\gamma^{a}/M,
+\end{align}
+then eq.~\eqref{Dmu} is rewritten as
+\begin{align}
+  D_{\mu}/M=\pdv{z^{\mu}}+\frac1{2} z^{\nu}R_{\nu\mu}{}^{ab}\frac14 \theta_{ab}
+\end{align}
+Notice that $\theta^a$ satisfies the anti-commutation relation
+\begin{align}
+  \{\theta^a,\theta^b\}=0,
+\end{align}
+if we ignore the higher order in $1/M$.  Therefore $\theta^a$ can be regarded as generators of Grassmann algebra rather than Clifford algebra.  In particular $\theta^{ab}$'s commute with each other in the calculation.
+
+\subsection{Evaluation of the kernel}
+Let us consider
+\begin{align}
+  K(z,t)=\bra{z}\exp\qty(tD_{\mu}D^{\mu})\ket{z=0},\quad
+  \ip{z'}{z}=\delta^{2n}(z-z'),\quad
+  D_{\mu}:=\del_{\mu}+\frac14 z^{\nu}R_{\nu\mu},\quad
+  R_{\nu\mu}:=\frac12 R_{ab\nu\mu}\theta^{ab},
+\end{align}
+in particular $K(0,1)$.
+
+$K(z,t)$ satisfy the differential equation
+\begin{align}
+  \pdv{t} K(z,t)=D_{\mu}D^{\mu} K(z,t)
+  \label{diffeq}
+\end{align}
+and the initial condition
+\begin{align}
+  K(z,0)=\delta^{2n}(z).\label{initial}
+\end{align}
+
+In order to solve this equation, let us use an ansatz
+\begin{align}
+  K(z,t)=\exp\qty(\frac12 A_{\mu\nu}(t)z^{\mu}z^{\nu}+C(t)).
+\end{align}
+The derivatives are
+\begin{align}
+   & \pdv{t} K(z,t)=(\frac12 z^T \dot{A} z + \dot{C}) K(z,t),                                    \\
+   & D_{\mu} K(z,t)=(A z - \frac{R}{2}z)K(z,t),                                                  \\
+   & D_{\mu}D^{\mu}K(z,y)=\left[(A z - \frac{R}{2}z)^{T}(A z - \frac{R}{2}z)+\tr A\right] K(z,t)
+  =\left[z^T(A^2-R^2/4)z+\tr A\right]K(z,t),
+\end{align}
+where we employ the matrix notation and assume $A$ and $R$ commute.
+Thus eq.~\eqref{diffeq} implies
+\begin{align}
+  \frac12 \dot{A}=A^2-\frac{R^2}{4}, \\
+  \dot{C}=\tr A.
+\end{align}
+These equations are solved as
+\begin{align}
+  A=-\frac{R}{4}\coth\frac{Rt}{2}, \\
+  C=-\frac12 \tr \log(\sinh\frac{Rt}{2})+\log \alpha,
+\end{align}
+where we partly use the initial condition eq.~\eqref{initial}. $\alpha$ is a constant which will be determined by eq.~\eqref{initial}.  So far $K$ is written as
+\begin{align}
+  K(z,t)=\alpha \left(\det \sinh \frac{Rt}{2}\right)^{-1/2}
+  \exp\qty[-\frac12 z^T \qty(\frac{R}{4}\coth\frac{Rt}{2}) z ].
+\end{align}
+When $t$ is very small, $K$ is approximately expressed as
+\begin{align}
+  K(z,t)\cong \alpha t^{-n}\qty(\det \frac{R}{2})^{-1/2}
+  \exp\qty[-\frac{1}{4t}z^2],
+\end{align}
+and therefore the initial condition eq.~\eqref{initial} implies
+\begin{align}
+  \alpha=\frac{\qty(\det \frac{R}{2})^{1/2}}{(4\pi)^n}.
+\end{align}
+Hence $K$ is written as
+\begin{align}
+  K(z,t)=\frac{1}{(4\pi)^n}
+  \sqrt{\det\frac{R/2}{\sinh Rt/2}}
+  \exp\qty[-\frac12 z^T \qty(\frac{R}{4}\coth\frac{Rt}{2}) z ],
+\end{align}
+and in particular
+\begin{align}
+  K(0,1)=\frac{1}{(4\pi)^n}
+  \sqrt{\det\frac{R/2}{\sinh R/2}}. \label{kernel}
+\end{align}
+
+\subsection{Final form of the index formula}
+Taking the normalization difference $\ket{z=0}=\frac{1}{M^n}\ket{x_0}$
+\begin{align*}
+  \bra{x_0}\exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right)\ket{x_0}=
+  M^{2n} K(0,1)=\frac{M^{2n}}{(4\pi)^n}
+  \sqrt{\det\frac{R/2}{\sinh R/2}}.
+\end{align*}
+Thus the index formula eq.~\eqref{ind2} reads
+\begin{align}
+  \Ind{\Dsla}:=\int d^{2n}x \sqrt{g}\frac{M^{2n}}{(4\pi)^n}\tr_{s}\qty[\gammab
+    \tr_{c}(\exp(F))\sqrt{\det\frac{R/2}{\sinh R/2}}],\quad
+  F:=\frac12 F_{ab}\theta^{ab},
+  \label{ind3}
+\end{align}
+where $\tr_s,\tr_c$ are traces in spinor indices and color indices respectively.  Let
+\begin{align}
+  \tr_{c}(\exp(F))\sqrt{\det\frac{R/2}{\sinh R/2}}
+  =\Omega_{12\dots(2n)}\theta^{12\dots(2n)}+(\text{lower power in }\theta).
+\end{align}
+Then eq.~\eqref{ind3} is further calculated as
+\begin{align}
+  \Ind{\Dsla}
+   & =\int d^{2n}x \sqrt{g}\frac{M^{2n}}{(4\pi)^n}\tr_{s}(\gammab \Omega_{12\dots(2n)}\theta^{12\dots(2n)}) \\
+   & =\int d^{2n}x \sqrt{g}\frac{1}{(4\pi)^n}2^n i^n\Omega_{12\dots(2n)}                                    \\
+   & =\frac{i^n}{(2\pi)^n}\int d^{2n}x \sqrt{g}\Omega_{12\dots(2n)}                                         \\
+  =\frac{i^n}{(2\pi)^n} \int \Omega.
+\end{align}
+In the last expression we use the integral of $(2n)$-form $\Omega=\Omega_{12\dots(2n)}e^1e^2\dots e^{2n}$.  As a result we obtain the final formula for the index.
+\begin{align}
+   & \Ind(\Dsla)
+  =\int \frac{i^n}{(2\pi)^n}\tr_{c}(\exp(F))\sqrt{\det\frac{R/2}{\sinh R/2}}
+  =\int \tr_{c}\qty(\exp(\frac{iF}{2\pi}))\widehat{A}(R),                          \\
+   & \widehat{A}(R):=\sqrt{\det\frac{iR/(4\pi)}{\sinh iR/(4\pi)}},                 \\
+   & F=\frac12 F_{ab}e^a e^b,\qquad R^{c}{}_{d}=\frac12 R_{ab}{}^{c}{}_{d}e^a e^b.
+\end{align}
+ 
+\end{document}

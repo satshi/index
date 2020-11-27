@@ -1,0 +1,293 @@
+\documentclass[12pt,a4paper]{jlreq}
+\usepackage[text={16cm,25cm},centering]{geometry}
+\usepackage{tgtermes,tgheros,tgcursor}
+\usepackage[libertine]{newtxmath}
+%\usepackage{newtxmath}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+
+%\numberwithin{equation}{section}
+
+\renewcommand{\jot}{1.2ex}
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\Ncal}{\mathcal{N}}
+%\DeclareMathOperator*{\tr}{\mathrm{tr}}
+%\DeclareMathOperator*{\Tr}{\mathrm{Tr}}
+\DeclareMathOperator*{\Ind}{\mathrm{Ind}}
+
+\newcommand{\del}{\partial}
+
+\newcommand{\gammab}{\bar{\gamma}}
+\newcommand{\Dsla}{D\hspace{-0.65em}\big/}
+\newcommand{\Fsla}{F\hspace{-0.6em}\big/}
+\newcommand{\Rsc}{R_{\mathrm{sc}}}
+
+%\renewcommand{\theequation}{\roman{equation}}
+
+\begin{document}
+
+\section*{一般の偶数次元でのDirac演算子の指数定理}
+\begin{flushright}
+  {\large 山口　哲　　　　}  
+\end{flushright}
+
+このノートでは、一般の偶数次元でのDirac演算子の指数定理の導出を説明する。数学的な厳密性は欠いている。物理屋が、「まあ納得できる」というところを目指している。導出の大部分は\cite{Fujikawa}に沿っている。ただし、核の評価の部分は粒子の経路積分を用いる\cite{Fujikawa}とは異なる方法を用いている。この部分に関しては\cite{Yoshida}を参考にしながら、微分方程式を解いて求める方法の説明を試みた。
+\subsection*{曲がった空間でのスピノール}
+$2n$次元のEuclid空間でガンマ行列$\gamma_a,\ a=1,\dots,2n$は、反交換関係
+\begin{align*}
+  \{ \gamma_a,\gamma_b \} = 2\delta_{ab}
+\end{align*}
+を満たす。
+Chiralityの行列$\gammab$は、
+\begin{align*}
+  \gammab = (-i)^n \gamma_{1}\gamma_{2}\dots\gamma_{2n}
+\end{align*}
+と定義される。次のような記号を導入する。
+\begin{align*}
+  \gamma_{a_1 a_2 \cdots a_k} = \gamma_{[a_1}\gamma_{a_2}\cdots \gamma_{a_k]}.
+\end{align*}
+
+曲がった空間では、多脚場$e^{a}=e^{a}_{\mu} dx^{\mu}$を導入する必要がある。これは
+\begin{align*}
+  g_{\mu\nu}(x)=e^{a}_{\mu}(x)e^{b}_{\nu}(x)\delta_{ab}
+\end{align*}
+を満たす。座標の足$\mu,\nu,\dots$は、$g^{\mu\nu},g_{\mu\nu}$により上げ下げする。局所直交基底の足$a,b,\dots$は、$\delta^{ab},\delta_{ab}$により上げ下げする。 
+$\mu,\nu,\dots$の足と$a,b,\dots$の足は$e_{\mu}^{a},e^{\mu}_{a}$により付け替えることができる。
+
+多脚場の取り方にはSO$(2n)$の「ゲージ対称性」$e'^a(x)=\Lambda(x)^a{}_be^b(x),\ \Lambda(x)\in \mathrm{SO}(2n)$ がある。この対称性に対するゲージ場を$\omega_{\mu}{}^{a}{}_{b}(x)$と書き「スピン接続」と呼ぶ。これに対する場の強さ（曲率）は、
+\begin{align*}
+  R_{\mu\nu}{}^{a}{}_{b}:=(\del_{\mu}\omega_{\nu}-\del_{\nu}\omega_{\mu}+[\omega_{\mu},\omega_{\nu}])^{a}{}_{b}
+\end{align*}
+と定義される。Dirac スピノール$\psi$に対する共変微分は
+\begin{align*}
+  D_{\mu}\psi:=\del_{\mu}\psi+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}\psi
+\end{align*}
+と定義される。その交換関係は、
+\begin{align*}
+  [D_{\mu},D_{\nu}]\psi=R_{\mu\nu}{}^{ab}\frac14 \gamma_{ab}\psi
+\end{align*}
+のように曲率を用いて表される\footnote{交換関係ではなく、単なる２階共変微分は座標の足にも作用するので、$D_{\mu} D_{\nu}\psi=\del_{\mu}D_{\mu}\psi-\Gamma^{\rho}_{\mu\nu}D_{\rho}\psi+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}D_{\nu}\psi$である。ここで$\Gamma^{\rho}_{\mu\nu}$は Christoffel 記号である。ただし$\Gamma^{\rho}_{\mu\nu}=\Gamma^{\rho}_{\nu\mu}$の対称性のため、交換関係をとると消える。}。
+
+\subsection*{Dirac指数の評価}
+$2n$次元の多様体$X$上で重力とゲージ場に結合しているDiracスピノールを考えよう。共変微分は
+\begin{align*}
+  D_{\mu}\psi=\del_{\mu}\psi+A_{\mu}\psi+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}\psi
+\end{align*}
+となる。Dirac演算子は、
+\begin{align*}
+  \Dsla\psi:=\gamma^{\mu}D_{\mu}\psi.
+\end{align*}
+と定義される。Dirac指数は、
+\begin{align*}
+  \Ind{\Dsla}:=\Tr_{\Dsla \psi=0\text{ の解} } \gammab
+\end{align*}
+となる。ここで有用な事実は、ゼロモード以外の$\Dsla^2$の固有状態は必ず$+$chiralityと$-$chiralityがペアで現れることである。実際、$\psi$が$\Dsla^2$の$0$でない固有値の固有状態で、あるchiralityを持つとき$\Dsla\psi$は$\Dsla^2$の固有値は$\psi$と同じでchiralityは$\psi$とは反対である。この事実を利用すると、指数は次のようなすべての状態に関するトレースの形に書くことができる。
+\begin{align}
+  \Ind{\Dsla}=\Tr \left[\gammab\exp\left(\frac{\Dsla^2}{M^2}\right)\right].\label{ind1}
+\end{align}
+ここで$M>0$は任意である。この右辺を$M\to\infty$で評価しようというのが、戦略である。
+
+まず $\Dsla^2$を評価しよう。
+\begin{align}
+  \Dsla^2
+   & =\gamma^{\mu}\gamma^{\nu}D_{\mu}D_{\nu}                                                  \nonumber\\
+   & =g^{\mu\nu}D_{\mu}D_{\nu}+\frac12 \gamma^{\mu\nu}[D_{\mu},D_{\nu}]                       \nonumber\\
+   & =D_{\mu}D^{\mu}+\frac12 \gamma^{\mu\nu}(F_{\mu\nu}+R_{\mu\nu}{}^{ab}\frac14\gamma_{ab}).
+  \label{Dsla2}
+\end{align}
+Riemann テンソルの恒等式
+\begin{align*}
+  R_{\mu\nu\rho\sigma}=R_{\rho\sigma\mu\nu}=-R_{\nu\mu\rho\sigma}, \quad R_{\mu[\nu\rho\sigma]}=0
+\end{align*}
+を考慮すると式\eqref{Dsla2}の最後の項は
+\begin{align*}
+  \frac18\gamma^{\mu\nu}\gamma^{\rho\sigma}R_{\mu\nu\rho\sigma}
+  =-\frac14 \Rsc
+\end{align*}
+と書ける。ここで $\Rsc$ はスカラー曲率である。
+したがって
+\begin{align}
+  \frac{\Dsla^2}{M^2}=\frac{D_{\mu}D^{\mu}}{M^2}-\frac{\Rsc}{4M^2}+\frac{\Fsla}{M^2},\quad
+  \Fsla:=\frac12 F_{\mu\nu}\gamma^{\mu\nu}
+  \label{Dsla2M2}
+\end{align}
+となる。$M\to\infty$の極限を考える際、$1/M$の項は微分演算子やガンマ行列が掛けられていない限り無視できる\footnote{このあたりの近似は数学的に厳密にやるには議論が必要であろう。}。
+さらに、式\eqref{Dsla2M2}の中の各項同士の交換子も$1/M$の高次のであるので無視できる。なので$\exp$を分解できて
+\begin{align*}
+   & \exp\left(\frac{\Dsla^2}{M^2}\right)=
+  \exp\left(\frac{\Fsla}{M^2}\right)
+  \exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right),                  \\
+   & D_{\mu}=\del_{\mu}+\omega_{\mu}{}^{ab}\frac14 \gamma_{ab}
+\end{align*}
+となる\footnote{$D_{\mu}$の中のゲージ場の項や Christoffel 記号の項はガンマ行列も微分演算子も掛かっていないので無視できる。}。
+この結果を式\eqref{ind1}に代入し、$\Tr$を位置の空間に関するトレースとスピノールとカラー（ゲージ対称性の足）の空間に関するトレース$\tr$に分けると
+\begin{align}
+  \Ind{\Dsla}:=\int d^{2n}x \sqrt{g}\tr\qty[\gammab
+    \exp\left(\frac{\Fsla}{M^2}\right)
+    \bra{x}\exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right)\ket{x}],
+  \label{ind2}
+\end{align}
+を得る。ここで $\ket{x}$ は
+\begin{align}
+  \ip{x'}{x}=\frac{1}{\sqrt{g}}\delta^{2n}(x'-x).
+\end{align}
+のように規格化されている。
+
+あとは$\bra{x}\exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right)\ket{x}$を評価すればよい。そのために一点 $x_0$ を固定し、このまわりで次のような便利なゲージをとる。$y=x-x_0$ とし、
+\begin{align}
+  g_{\mu\nu}(x)=\delta_{\mu\nu}+O(y^2),\
+  e^{a}_{\mu}=\delta^{a}_{\mu}+O(y^2),\
+  \omega_{\mu}{}^{ab}(x)=\frac12 y^{\nu}R_{\nu\mu}{}^{ab}(x_0)+O(y^2)
+\end{align}
+となるようにする。すると
+\begin{align}
+  D_{\mu}/M=\del_{\mu}/M+\frac1{2M} y^{\nu}R_{\nu\mu}{}^{ab}\frac14 \gamma_{ab}\label{Dmu}
+\end{align}
+となる。さらに $y$ と $\gamma$ をスケール変換し、
+\begin{align}
+  z^{\mu}:=M y^{\mu},\quad \theta^{a}:=\gamma^{a}/M,
+\end{align}
+とするのが便利である。こうすると式\eqref{Dmu}は
+\begin{align}
+  D_{\mu}/M=\pdv{z^{\mu}}+\frac1{2} z^{\nu}R_{\nu\mu}{}^{ab}\frac14 \theta_{ab}
+\end{align}
+と書き換えることができる。
+ここで$1/M$の高次を無視すると$\theta^a$は反交換関係
+\begin{align}
+  \{\theta^a,\theta^b\}=0
+\end{align}
+を満たす。つまり$\theta^a$は、Clifford 代数というより、Grassmann 代数の生成子であるとみなすことができる。特に $\theta^{ab}$ は互いに交換するとしてよい。
+
+\subsection*{核の評価}
+次のような$K(z,t)$を考えよう。
+\begin{align}
+  K(z,t)=\bra{z}\exp\qty(tD_{\mu}D^{\mu})\ket{z=0},\quad
+  \ip{z'}{z}=\delta^{2n}(z-z'),\quad
+  D_{\mu}:=\del_{\mu}+\frac14 z^{\nu}R_{\nu\mu},\quad
+  R_{\nu\mu}:=\frac12 R_{ab\nu\mu}\theta^{ab}.
+\end{align}
+特に $K(0,1)$ が計算したい量である。
+
+$K(z,t)$は微分方程式
+\begin{align}
+  \pdv{t} K(z,t)=D_{\mu}D^{\mu} K(z,t)
+  \label{diffeq}
+\end{align}
+と、初期条件
+\begin{align}
+  K(z,0)=\delta^{2n}(z)\label{initial}
+\end{align}
+を満たす。
+
+微分方程式を解くために次のようなansatzを置く。
+\begin{align}
+  K(z,t)=\exp\qty(\frac12 A_{\mu\nu}(t)z^{\mu}z^{\nu}+C(t)),\qquad A_{\mu\nu}(t)=A_{\nu\mu}(t).
+\end{align}
+微分を計算すると
+\begin{align}
+   & \pdv{t} K(z,t)=(\frac12 z^T \dot{A} z + \dot{C}) K(z,t),                                    \\
+   & D_{\mu} K(z,t)=(A z - \frac{R}{4}z)K(z,t),                                                  \\
+   & D_{\mu}D^{\mu}K(z,t)=\left[(A z - \frac{R}{4}z)^{T}(A z - \frac{R}{2}z)+\tr A\right] K(z,t)
+  =\left[z^T(A^2-R^2/16)z+\tr A\right]K(z,t)
+\end{align}
+となる。ここで$A,R$ に関して$\mu,\nu$の足を行列の足とする行列の記号を導入している。また、$A$と$R$は交換すると仮定している\footnote{このあたりのansatzや仮定は、厳密性をなんら損なわない。このようにして得られた「解」を元の微分方程式に代入したり$t\to 0$をとってみれば、それが解であることや初期条件を満たすことは厳密に証明できる。ただし、今は Grassmann 
+代数上で考えているので「解の一意性」は証明が必要なことなのかもしれない。}。
+式\eqref{diffeq}に代入し、$z^{\mu}$の各次数の係数を見ると
+\begin{align}
+  \frac12 \dot{A}=A^2-\frac{R^2}{16}, \\
+  \dot{C}=\tr A
+\end{align}
+を得る。
+これらの方程式を解くと
+\begin{align}
+  A=-\frac{R}{4}\coth\frac{Rt}{2}, \\
+  C=-\frac12 \tr \log(\sinh\frac{Rt}{2})+\log \alpha
+\end{align}
+となる。
+ここでは一部初期条件\eqref{initial}を考慮した。$\alpha$ は定数であり初期条件\eqref{initial}から決める。ここまでで $K$ は
+\begin{align}
+  K(z,t)=\alpha \left(\det \sinh \frac{Rt}{2}\right)^{-1/2}
+  \exp\qty[-\frac12 z^T \qty(\frac{R}{4}\coth\frac{Rt}{2}) z ]
+\end{align}
+と書けていることがわかった。
+$t$ が非常に小さい場合 $K$ は近似的に
+\begin{align}
+  K(z,t)\cong \alpha t^{-n}\qty(\det \frac{R}{2})^{-1/2}
+  \exp\qty[-\frac{1}{4t}z^2],
+\end{align}
+と書けるので初期条件\eqref{initial}より
+\begin{align}
+  \alpha=\frac{\qty(\det \frac{R}{2})^{1/2}}{(4\pi)^n}
+\end{align}
+と求まる。まとめると
+\begin{align}
+  K(z,t)=\frac{1}{(4\pi)^n}
+  \sqrt{\det\frac{R/2}{\sinh Rt/2}}
+  \exp\qty[-\frac12 z^T \qty(\frac{R}{4}\coth\frac{Rt}{2}) z ]
+\end{align}
+を得る。
+特に
+\begin{align}
+  K(0,1)=\frac{1}{(4\pi)^n}
+  \sqrt{\det\frac{R/2}{\sinh R/2}} \label{kernel}
+\end{align}
+が計算したかったものである。
+\subsection*{指数の式の最終的な形}
+規格化の違い $\ket{z=0}=\frac{1}{M^n}\ket{x_0}$ を考慮すると
+\begin{align*}
+  \bra{x_0}\exp\left(\frac{D_{\mu}D^{\mu}}{M^2}\right)\ket{x_0}=
+  M^{2n} K(0,1)=\frac{M^{2n}}{(4\pi)^n}
+  \sqrt{\det\frac{R/2}{\sinh R/2}}
+\end{align*}
+となる。したがって
+指数の式\eqref{ind2}は
+\begin{align}
+  \Ind{\Dsla}:=\int d^{2n}x \sqrt{g}\frac{M^{2n}}{(4\pi)^n}\tr_{s}\qty[\gammab
+    \tr_{c}(\exp(F))\sqrt{\det\frac{R/2}{\sinh R/2}}],\quad
+  F:=\frac12 F_{ab}\theta^{ab},
+  \label{ind3}
+\end{align}
+となる。ここで$\tr_s,\tr_c$はそれぞれスピノールの足、カラーの足に関するトレースである。これを微分形式の積分の形に直していこう。$\tr_s[\gammab \cdots]$のところは、$\cdots$の中で$\theta^{a}$が$2n$個反対称に掛かっている部分のみが消えないで残る。この部分を
+\begin{align}
+  \tr_{c}(\exp(F))\sqrt{\det\frac{R/2}{\sinh R/2}}
+  =\Omega_{12\dots(2n)}\theta^{12\dots(2n)}+(\text{lower power in }\theta)
+\end{align}
+のように書くと、
+式\eqref{ind3}はさらに変形できて
+\begin{align}
+  \Ind{\Dsla}
+   & =\int d^{2n}x \sqrt{g}\frac{M^{2n}}{(4\pi)^n}\tr_{s}(\gammab \Omega_{12\dots(2n)}\theta^{12\dots(2n)}) \\
+   & =\int d^{2n}x \sqrt{g}\frac{1}{(4\pi)^n}2^n i^n\Omega_{12\dots(2n)}                                    \\
+   & =\frac{i^n}{(2\pi)^n}\int d^{2n}x \sqrt{g}\Omega_{12\dots(2n)}                                         \\
+  &=\frac{i^n}{(2\pi)^n} \int_{X} \Omega
+\end{align}
+となる。最後の積分では$(2n)$-形式 $\Omega=\Omega_{12\dots(2n)}e^1e^2\dots e^{2n}$の多様体$X$上での積分の形に書き換えた。まとめると指数の式
+\begin{align}
+   & \Ind(\Dsla)
+  =\int_{X} \frac{i^n}{(2\pi)^n}\tr_{c}(\exp(F))\sqrt{\det\frac{R/2}{\sinh R/2}}
+  =\int_{X} \tr_{c}\qty(\exp(\frac{iF}{2\pi}))\widehat{A}(R),                          \\
+   & \widehat{A}(R):=\sqrt{\det\frac{iR/(4\pi)}{\sinh iR/(4\pi)}},                 \\
+   & F=\frac12 F_{ab}e^a e^b,\qquad R^{c}{}_{d}=\frac12 R_{ab}{}^{c}{}_{d}e^a e^b.
+\end{align}
+を得る。ただし、多様体$X$上の様々な階数の混じった微分形式の積分は$(2n)$-形式の部分のみを取り出して積分するという約束である。
+
+ちなみに今回用いたゲージ場$A_{\mu}$と物理でよく使われるエルミート行列になるゲージ場$A^{(H)}_{\mu}$は$iA_{\mu}=A^{(H)}_{\mu}$の関係にある。エルミート行列のゲージ場を用いる場合、
+\begin{align*}
+  F^{(H)}:=\frac12 F^{(H)}_{\mu\nu}dx^{\mu}\wedge dx^{\nu}=iF,\quad
+  F^{(H)}_{\mu\nu}:=\del_{\mu}A^{(H)}_{\nu}-\del_{\nu}A^{(H)}_{\mu}-i[A^{(H)}_{\mu},A^{(H)}_{\nu}]
+\end{align*}
+として指数の式は、
+\begin{align}
+\Ind(\Dsla)
+ =\int_{X} \tr_{c}\qty(\exp(\frac{F^{(H)}}{2\pi}))\widehat{A}(R)
+\end{align}
+となる。
+\begin{thebibliography}{9}
+  \bibitem{Fujikawa} 藤川和男, 「経路積分と対称性の量子的破れ」, 岩波書店.
+  \bibitem{Yoshida} 吉田朋好, 「ディラック作用素の指数定理」, 共立出版.
+\end{thebibliography}
+
+\end{document}
